@@ -9,7 +9,6 @@
 
 
 
-<div>{@html data.fakeQuote}</div>
-<div>{data.realQuote}</div>
+<div>{@html JSON.stringify(data.openAIResponse.text)}</div>
 
 <button><a href={`/`}>Try Again</a></button>

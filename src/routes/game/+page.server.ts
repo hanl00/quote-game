@@ -15,14 +15,13 @@ export const load = (async ({ fetch, params, url }) => {
 
   const response = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: "Give me a quote from Nelson Mandela first followed by 2 random quotes fromfamous people in an array format without names",
+    prompt: `Give me a quote from ${name} first followed by 2 random quotes fromfamous people in an array format without names`,
     temperature: 0.6,
     max_tokens: 225,
     top_p: 1,
     frequency_penalty: 1,
     presence_penalty: 1,
   });
-  console.log("🚀 ~ file: +page.server.ts:25 ~ load ~ openAIResponse", response.data)
 
   return {
     openAIResponse: response.data.choices[0],
