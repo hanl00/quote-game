@@ -1,5 +1,5 @@
 export function cleanQuote(quote?: string): string {
-    return quote ? quote.replace(/['"]+/g, '').replace(/[\[\]']/g, '').replace(/(\r\n|\n|\r)/gm, "").trim() : '';
+    return quote ? quote.replace(/["]+/g, '').replace(/[\[\]']/g, '').replace(/(\r\n|\n|\r)/gm, "").trim() : '';
 }
 export function shuffle(array: any) {
     let currentIndex = array.length,  randomIndex;

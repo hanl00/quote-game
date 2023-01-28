@@ -48,13 +48,18 @@
 		<div class="flip-box">
 			<div class="flip-box-inner" class:show-back={selected === i}>
 				<div class="flip-box-front card">
-					<p>{quote}</p>
+					<div class="flip-box-text">
+						<p>{quote}</p>
+					</div>
 				</div>
-
 				<div class:flip-box-back={true} class:container={true} class:win={result}>
-					<h2>{result}</h2>
+					<div class="flip-box-text">
+						<h2>{result ? 'WIN' : 'LOSE'}</h2>
+					</div>
 				</div>
 			</div>
+
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<footer on:click={toggleBackFront} data-card-id={i}>View Answer</footer>
 		</div>
 	{/each}
@@ -83,8 +88,8 @@
 	/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 	.flip-box {
 		background-color: transparent;
-		width: 250px;
-		height: 325px;
+		width: 175px;
+		height: 225px;
 		margin: 0 20px 40px;
 		perspective: 1000px; /* Remove this if you don't want the 3D effect */
 		border-color: #000000;
@@ -131,10 +136,14 @@
 		flex-direction: column;
 		justify-content: space-between;
 		color: white;
-		width: 250px;
-		height: 325px;
+		width: 175px;
+		height: 225px;
 		transform: rotateY(180deg) translateX(6px);
 		background-color: red;
+	}
+
+	.flip-box-text {
+		margin: 28px 12px;
 	}
 
 	.win {
@@ -142,30 +151,24 @@
 	}
 
 	footer {
-		width: 200px;
+		width: 175px;
 		font-weight: 800;
+		margin-top: 12px;
 		padding: 5px 2px;
 		text-align: center;
-		border: 1px solid darkgray;
-		border-top: 1px solid black;
+		border: 2px solid black;
 		cursor: pointer;
 		transition: 0.3s all;
-	}
-
-	footer:hover {
 		color: #fff;
 		background-color: #000;
 		border: 1px solid black;
 	}
 
-	footer:active {
-		color: #000;
-		background-color: #888;
-	}
-
 	/* Add some shadows to create a card effect */
 	.card {
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		font-weight: 650;
+		font-size: large;
+		font-family: monaco, monospace;
 	}
 
 	/* Some left and right padding inside the container */
