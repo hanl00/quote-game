@@ -1,4 +1,4 @@
-Build with Svelte Material UI, OpenAI API and SvelteKit
+Built with Svelte Material UI, OpenAI API and SvelteKit
 
 # create-svelte
 
