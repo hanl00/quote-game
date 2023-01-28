@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Button from '@smui/button';
-	import type { PageData, ActionData } from './$types';
+	import type { PageData } from './$types';
 	import { cleanQuote, shuffle } from '../../utils/utils';
 
 	export let data: PageData;
@@ -48,10 +48,10 @@
 		<div class="flip-box">
 			<div class="flip-box-inner" class:show-back={selected === i}>
 				<div class="flip-box-front card">
-					<p> {quote} </p>
+					<p>{quote}</p>
 				</div>
 
-				<div class="flip-box-back container">
+				<div class:flip-box-back={true} class:container={true} class:win={result}>
 					<h2>{result}</h2>
 				</div>
 			</div>
@@ -60,28 +60,36 @@
 	{/each}
 </div>
 
-<div>{@html JSON.stringify(choices)}</div>
-<Button variant="raised" href="/">Try Again</Button>
+<div><Button class="buttonStyle" variant="raised" href={`/`}>Try Again!</Button></div>
 
 <style>
-	h1 {
-		margin: 0 0 5px;
+	* :global(.buttonStyle) {
+		text-decoration: none;
+		margin: 16px;
+		background-color: #ffff00;
+		text-transform: none;
+		box-shadow: 4px 4px #000000;
+		color: #000000;
+		border-color: #000000;
+		border: 2px solid;
 	}
 
 	.row {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		margin-bottom: 10%;
 	}
+
 	/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 	.flip-box {
 		background-color: transparent;
-		width: 200px;
-		height: 310px;
+		width: 250px;
+		height: 325px;
 		margin: 0 20px 40px;
-		border: 1px solid #f1f1f1;
 		perspective: 1000px; /* Remove this if you don't want the 3D effect */
+		border-color: #000000;
+		border: 2px solid;
+		box-shadow: 4px 4px #000000;
 	}
 
 	/* This container is needed to position the front and back side */
@@ -98,7 +106,6 @@
 	/* 	.flip-box:hover .flip-box-inner {
 	transform: rotateY(180deg);
 } */
-
 	.show-back {
 		transform: rotateY(180deg);
 	}
@@ -115,7 +122,7 @@
 
 	/* Style the front side */
 	.flip-box-front {
-		background-color: rgb(135, 54, 54);
+		background-color: #0d9ba3;
 	}
 
 	/* Style the back side */
@@ -123,11 +130,15 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		background-color: black;
 		color: white;
-		width: 196px;
-		height: 300px;
+		width: 250px;
+		height: 325px;
 		transform: rotateY(180deg) translateX(6px);
+		background-color: red;
+	}
+
+	.win {
+		background-color: green;
 	}
 
 	footer {
@@ -137,7 +148,6 @@
 		text-align: center;
 		border: 1px solid darkgray;
 		border-top: 1px solid black;
-		/* 		box-shadow: 0 0 2px black; */
 		cursor: pointer;
 		transition: 0.3s all;
 	}
@@ -153,22 +163,6 @@
 		background-color: #888;
 	}
 
-	/* Three columns side by side */
-	/* .column {
-	float: left;
-	width: 33.3%;
-	margin-bottom: 16px;
-	padding: 0 8px;
-} */
-
-	/* Display the columns below each other instead of side by side on small screens */
-	/* @media screen and (max-width: 650px) {
-	.column {
-		width: 100%;
-		display: block;
-	}
-}
- */
 	/* Add some shadows to create a card effect */
 	.card {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -176,37 +170,6 @@
 
 	/* Some left and right padding inside the container */
 	.container {
-		padding: 5px;
-	}
-
-	/* Clear floats */
-	/* 	.container::after, .row::after {
-	content: "";
-	clear: both;
-	display: table;
-} */
-
-	h2 {
-		margin: 5px 0 0 0;
-	}
-
-	.title {
-		color: grey;
-	}
-
-	.button {
-		border: none;
-		outline: 0;
-		display: inline-block;
-		padding: 8px;
-		font-weight: bold;
-		background-color: #fff;
-		text-align: center;
-		cursor: pointer;
-		width: 80%;
-	}
-
-	.button:hover {
-		background-color: goldenrod;
+		margin-left: 6px;
 	}
 </style>
