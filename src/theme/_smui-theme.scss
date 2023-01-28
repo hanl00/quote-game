@@ -3,23 +3,32 @@
 @use '@material/theme/color-palette';
 
 // Svelte Colors!
-@use '@material/theme/index' as theme with (
-  $primary: #ff3e00,
+@use '@material/theme/index' as theme with ($primary: #ff3e00,
   $secondary: #676778,
   $surface: #fff,
   $background: #fff,
-  $error: color-palette.$red-900
-);
+  $error: color-palette.$red-900);
+
 
 html,
 body {
-  background-color: theme.$surface;
+  background-color: #66ffd9;
   color: theme.$on-surface;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: inline-block;
 }
 
 a {
   color: #40b3ff;
 }
+
 a:visited {
   color: color.scale(#40b3ff, $lightness: -35%);
 }
